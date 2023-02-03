@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   _utest.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: graux <graux@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 18:45:32 by graux             #+#    #+#             */
-/*   Updated: 2023/02/03 21:43:50 by graux            ###   ########.fr       */
+/*   Created: 2023/02/03 19:10:14 by graux             #+#    #+#             */
+/*   Updated: 2023/02/03 19:14:35 by graux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//TODO fix relative imclude?
-#include "../framework/libunit.h"
+#ifndef _UTEST_H
+# define _UTEST_H
 
-int	main(int argc, char *argv[])
+struct s_utest
 {
-	t_status	status;
+	struct s_utest	*next;
+	char			*name;
+	int				(*utest_func)(void);
+};
 
-	return (-status);
-}
+#endif
