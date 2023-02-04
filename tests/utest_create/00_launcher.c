@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_input.h                                       :+:      :+:    :+:   */
+/*   00_launcher.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: graux <graux@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 19:29:25 by graux             #+#    #+#             */
-/*   Updated: 2023/02/04 16:29:06 by graux            ###   ########.fr       */
+/*   Created: 2023/02/04 16:33:16 by graux             #+#    #+#             */
+/*   Updated: 2023/02/04 16:53:54 by graux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_INPUT_H
-# define TEST_INPUT_H
+#include "../../framework/libunit.h"
+#include "../../framework/test_input.h"
+#include "utest_create_tests.h"
 
-//TODO maybe not a struct just typedef
-typedef struct s_test_input
+t_status	utest_create_launcher(void)
 {
-	char	*name;
-	int		(*utest_func)(void);
-}				t_test_input;
+	t_utest_ptr			utests;
+	const t_test_input	input[] = {
+	{"basic_test", &basic_test},
+	{"null_test", &null_test},
+	};
 
-#endif
+	utest_create_routine(input, utest_input_size(input));
+	return (utest_run_routine(utests));
+}
