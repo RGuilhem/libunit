@@ -6,7 +6,7 @@
 /*   By: graux <graux@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:33:16 by graux             #+#    #+#             */
-/*   Updated: 2023/02/04 17:36:47 by graux            ###   ########.fr       */
+/*   Updated: 2023/02/04 17:45:02 by graux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_status	utest_create_launcher(void)
 	{.name = "null_test", .func = &null_test}
 	};
 
-	//TODO print routine name
+	put_str("UTEST_CREATE");
 	routine_size = sizeof(utests) / sizeof(utests[0]);
 	return (utest_run_routine(utests, routine_size));
 }

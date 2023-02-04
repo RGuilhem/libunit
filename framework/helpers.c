@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utest_run.c                                        :+:      :+:    :+:   */
+/*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: graux <graux@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 21:50:39 by graux             #+#    #+#             */
-/*   Updated: 2023/02/04 17:42:19 by graux            ###   ########.fr       */
+/*   Created: 2023/02/04 17:40:35 by graux             #+#    #+#             */
+/*   Updated: 2023/02/04 17:44:33 by graux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
-#include <stdlib.h>
+#include <unistd.h>
 
-t_status	utest_run(const t_utest *utest)
+void	put_str(const char *str)
 {
-	//TODO implement
-	return (FAIL);
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		write(1, &str[i++], 1);
 }
 
-t_status	utest_run_routine(const t_utest *utests, size_t routine_size)
+void	put_nbr(size_t nbr)
 {
-	size_t		i;
-	size_t		passed_tests;
-	t_status	status;
-
-	status = OK;
-	i = 0;
-	passed_tests = 0;
-	while (i < routine_size)
-	{
-		if (utest_run(&utests[i]) == FAIL)
-			status = FAIL;
-		else
-			passed_tests++;
-		i++;
-	}
-	return (status);
+	//TODO implement
 }
