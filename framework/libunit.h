@@ -6,7 +6,7 @@
 /*   By: graux <graux@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 18:50:54 by graux             #+#    #+#             */
-/*   Updated: 2023/02/04 16:59:10 by graux            ###   ########.fr       */
+/*   Updated: 2023/02/04 17:36:53 by graux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,21 @@
 # define LIBUNIT_H
 
 # include "status.h"
-# include "test_input.h"
 # include <stddef.h>
 
-typedef struct s_utest	*t_utest_ptr;
+typedef struct s_utest
+{
+	char			*name;
+	int				(*func)(void);
+}		t_utest;
 
-t_utest_ptr	utest_create(char *name, int (*func)(void));
-t_utest_ptr	utest_create_routine(const t_test_input *inputs, size_t len);
-void		utest_destroy(t_utest_ptr utest);
-void		utest_clear_list(t_utest_ptr *utests);
-void		utest_add(t_utest_ptr utest, char *name, int (*func)(void));
-
-t_status	utest_run(t_utest_ptr utest);
-t_status	utest_run_routine(t_utest_ptr ustest, size_t routine_size);
+t_status	utest_run(const t_utest *utest);
+t_status	utest_run_routine(const t_utest *utests, size_t routine_size);
 
 //TODO not visible to api
-void		utest_parent_handle(t_utest_ptr utest);
-void		utest_child_handle(t_utest_ptr utest);
+void		utest_parent_handle(t_utest *utest);
+void		utest_child_handle(t_utest *utest);
 
-//TODO implement
-size_t		utest_input_size(const t_test_input inputs[]);
 // Helpers
 
 #endif
