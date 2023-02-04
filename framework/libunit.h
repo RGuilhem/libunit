@@ -6,7 +6,7 @@
 /*   By: graux <graux@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 18:50:54 by graux             #+#    #+#             */
-/*   Updated: 2023/02/04 16:54:08 by graux            ###   ########.fr       */
+/*   Updated: 2023/02/04 16:59:10 by graux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		utest_clear_list(t_utest_ptr *utests);
 void		utest_add(t_utest_ptr utest, char *name, int (*func)(void));
 
 t_status	utest_run(t_utest_ptr utest);
-t_status	utest_run_routine(t_utest_ptr ustest);
+t_status	utest_run_routine(t_utest_ptr ustest, size_t routine_size);
 
 //TODO not visible to api
 void		utest_parent_handle(t_utest_ptr utest);

@@ -6,7 +6,7 @@
 /*   By: graux <graux@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:33:16 by graux             #+#    #+#             */
-/*   Updated: 2023/02/04 16:53:54 by graux            ###   ########.fr       */
+/*   Updated: 2023/02/04 17:01:22 by graux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@
 t_status	utest_create_launcher(void)
 {
 	t_utest_ptr			utests;
+	size_t				routine_size;
 	const t_test_input	input[] = {
 	{"basic_test", &basic_test},
-	{"null_test", &null_test},
+	{"null_test", &null_test}
 	};
 
-	utest_create_routine(input, utest_input_size(input));
-	return (utest_run_routine(utests));
+	routine_size = utest_input_size(input);
+	utests = utest_create_routine(input, routine_size);
+	return (utest_run_routine(utests, routine_size));
 }

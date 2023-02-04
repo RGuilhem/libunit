@@ -6,7 +6,7 @@
 /*   By: graux <graux@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:44:35 by graux             #+#    #+#             */
-/*   Updated: 2023/02/04 16:47:02 by graux            ###   ########.fr       */
+/*   Updated: 2023/02/04 17:03:42 by graux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../../framework/libunit.h"
 
+t_status	utest_create_launcher(void);
 t_status	basic_test(void);
 t_status	null_test(void);
 
