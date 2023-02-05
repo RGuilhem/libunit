@@ -6,7 +6,7 @@
 /*   By: graux <graux@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 18:50:54 by graux             #+#    #+#             */
-/*   Updated: 2023/02/04 17:40:11 by graux            ###   ########.fr       */
+/*   Updated: 2023/02/05 17:08:26 by graux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,20 @@ typedef struct s_utest
 	int				(*func)(void);
 }		t_utest;
 
+typedef enum e_test_sig
+{
+	T_OK = OK,
+	T_KO = FAIL,
+	T_SEGV,
+	T_BUSE,
+	T_UNKOWN,
+}			t_test_sig;
+
 t_status	utest_run(const t_utest *utest);
 t_status	utest_run_routine(const t_utest *utests, size_t routine_size);
 
-void		utest_parent_handle(t_utest *utest);
-void		utest_child_handle(t_utest *utest);
+t_test_sig	utest_parent_handle(const t_utest *utest);
+void		utest_child_handle(const t_utest *utest);
 
 // Helpers
 void		put_str(const char *str);
