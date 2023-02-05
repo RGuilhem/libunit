@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   00_launcher.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: graux <graux@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 18:45:32 by graux             #+#    #+#             */
-/*   Updated: 2023/02/04 17:02:59 by graux            ###   ########.fr       */
+/*   Created: 2023/02/04 16:33:16 by graux             #+#    #+#             */
+/*   Updated: 2023/02/04 17:45:02 by graux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//TODO fix relative imclude?
-#include "../framework/libunit.h"
-#include "utest_create/utest_create_tests.h"
+#include "../../framework/libunit.h"
+#include "utest_create_tests.h"
 
-int	main(int argc, char *argv[])
+t_status	utest_create_launcher(void)
 {
-	t_status	status;
+	size_t			routine_size;
+	const t_utest	utests[] = {
+	{.name = "basic_test", .func = &basic_test},
+	{.name = "null_test", .func = &null_test}
+	};
 
-	status = OK;
-	status |= utest_create_launcher();
-	return (-status);
+	put_str("UTEST_CREATE");
+	routine_size = sizeof(utests) / sizeof(utests[0]);
+	return (utest_run_routine(utests, routine_size));
 }

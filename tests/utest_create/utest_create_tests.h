@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utest_create_tests.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: graux <graux@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 18:45:32 by graux             #+#    #+#             */
-/*   Updated: 2023/02/04 17:02:59 by graux            ###   ########.fr       */
+/*   Created: 2023/02/04 16:44:35 by graux             #+#    #+#             */
+/*   Updated: 2023/02/04 17:03:42 by graux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//TODO fix relative imclude?
-#include "../framework/libunit.h"
-#include "utest_create/utest_create_tests.h"
+#ifndef UTEST_CREATE_TESTS_H
+# define UTEST_CREATE_TESTS_H
 
-int	main(int argc, char *argv[])
-{
-	t_status	status;
+# include "../../framework/libunit.h"
 
-	status = OK;
-	status |= utest_create_launcher();
-	return (-status);
-}
+t_status	utest_create_launcher(void);
+t_status	basic_test(void);
+t_status	null_test(void);
+
+#endif

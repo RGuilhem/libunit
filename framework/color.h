@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: graux <graux@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 18:45:32 by graux             #+#    #+#             */
-/*   Updated: 2023/02/04 17:02:59 by graux            ###   ########.fr       */
+/*   Created: 2023/02/04 17:50:13 by graux             #+#    #+#             */
+/*   Updated: 2023/02/04 17:55:52 by graux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//TODO fix relative imclude?
-#include "../framework/libunit.h"
-#include "utest_create/utest_create_tests.h"
+#ifndef COLOR_H
+# define COLOR_H
 
-int	main(int argc, char *argv[])
-{
-	t_status	status;
+# define RESET		"\033[0m"
+# define RED		"\033[31m"
+# define GREEN		"\033[32m"
+# define YELLOW		"\033[33m"
+# define MAGENTA	"\033[35m"
 
-	status = OK;
-	status |= utest_create_launcher();
-	return (-status);
-}
+#endif

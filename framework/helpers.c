@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: graux <graux@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 18:45:32 by graux             #+#    #+#             */
-/*   Updated: 2023/02/04 17:02:59 by graux            ###   ########.fr       */
+/*   Created: 2023/02/04 17:40:35 by graux             #+#    #+#             */
+/*   Updated: 2023/02/04 17:44:33 by graux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//TODO fix relative imclude?
-#include "../framework/libunit.h"
-#include "utest_create/utest_create_tests.h"
+#include "libunit.h"
+#include <unistd.h>
 
-int	main(int argc, char *argv[])
+void	put_str(const char *str)
 {
-	t_status	status;
+	size_t	i;
 
-	status = OK;
-	status |= utest_create_launcher();
-	return (-status);
+	i = 0;
+	while (str[i])
+		write(1, &str[i++], 1);
+}
+
+void	put_nbr(size_t nbr)
+{
+	//TODO implement
 }
