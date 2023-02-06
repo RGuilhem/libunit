@@ -3,7 +3,7 @@ CC      = gcc
 CFLAGS  = -Wall -Wextra -Werror
 AR      = ar -rcs
 
-SRC_CREATE     = 00_launcher.c  \
+SRC_CREATE     = 00_utest_create_launcher.c  \
 				 01_basic_test.c \
 				 02_null_test.c \
 				 03_segv_test.c
