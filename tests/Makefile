@@ -5,23 +5,29 @@ AR      = ar -rcs
 
 SRC_CREATE     = 00_launcher.c  \
 				 01_basic_test.c \
-SRC_CREATE_DIR = $(addprefix utest_create/, $(SRC))
+				 02_null_test.c
+SRC_CREATE_DIR = $(addprefix utest_create/, $(SRC_CREATE))
 
 SRC     = main.c $(SRC_CREATE_DIR)
 OBJ     = $(SRC:.c=.o)
 INCLUDE = ../framework
 
-NAME    = unittest
+NAME    = unittests
+
+TEST_OBJ_TOT = $(addprefix ../, $(TEST_OBJ))
 
 all: $(NAME)
 
 %.o: %.c
 	$(CC) -c $< -o $@ $(CLFAGS)
 
-$(NAME): $(OBJ)
-	$(CC) -o $(NAME) $(CFLAGS) -I$(INCLUDE) $(OBJ)
+$(NAME): $(OBJ) $(TEST_OBJ_TOT)
+	$(CC) -o $(NAME) $(CFLAGS) -I$(INCLUDE) $(OBJ) $(TEST_OBJ_TOT) 
+	@echo "TEST COMPILATION DONE"
 
 test: $(NAME)
+	@echo "---------------UNIT TESTER---------------"
+	./$(NAME)
 
 clean:
 	$(RM) $(OBJ)
@@ -31,4 +37,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: re all clean fclean
+PHONY: re all clean fclean

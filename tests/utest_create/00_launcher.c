@@ -6,7 +6,7 @@
 /*   By: graux <graux@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 16:33:16 by graux             #+#    #+#             */
-/*   Updated: 2023/02/06 13:22:40 by graux            ###   ########.fr       */
+/*   Updated: 2023/02/06 15:03:50 by graux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_status	utest_create_launcher(void)
 	{.name = "null_test", .func = &null_test}
 	};
 
-	put_str("UTEST_CREATE");
+	put_str("UTEST_CREATE\n");
 	routine_size = sizeof(utests) / sizeof(utests[0]);
 	return (utest_run_routine(utests, routine_size));
 }

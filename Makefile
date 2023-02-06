@@ -19,6 +19,7 @@ $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
 
 test: $(NAME)
+	@cd tests && make "TEST_OBJ=$(OBJ)" && make test
 
 clean:
 	$(RM) $(OBJ)

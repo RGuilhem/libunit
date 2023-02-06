@@ -6,7 +6,7 @@
 /*   By: graux <graux@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 21:50:39 by graux             #+#    #+#             */
-/*   Updated: 2023/02/05 17:10:09 by graux            ###   ########.fr       */
+/*   Updated: 2023/02/06 15:11:54 by graux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static void	print_routine_recap(size_t passed, size_t total)
 {
 	put_str("\n");
 	if (passed == total)
-		put_str(GREEN"OK "RESET);
+		put_str(GREEN"OK "RESET"-> ");
 	else
-		put_str(RED"FAIL "RESET);
+		put_str(RED"FAIL "RESET"-> ");
 	put_nbr(passed);
 	put_str("/");
 	put_nbr(total);
