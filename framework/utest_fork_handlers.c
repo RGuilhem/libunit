@@ -6,7 +6,7 @@
 /*   By: graux <graux@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 11:08:39 by graux             #+#    #+#             */
-/*   Updated: 2023/02/06 15:17:05 by graux            ###   ########.fr       */
+/*   Updated: 2023/02/06 15:43:33 by graux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,9 @@ t_test_sig	utest_parent_handle(const t_utest *utest)
 
 	wait(&child_status);
 	if (WIFEXITED(child_status))
-	{
-		put_str("test exited\n");
 		res = WEXITSTATUS(child_status);
-	}
 	else if (WIFSIGNALED(child_status))
-	{
-		put_str("test crashed\n");
 		res = decode_term_sig(WTERMSIG(child_status));
-	}
 	return (res);
 }
 

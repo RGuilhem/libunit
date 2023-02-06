@@ -5,7 +5,8 @@ AR      = ar -rcs
 
 SRC_CREATE     = 00_launcher.c  \
 				 01_basic_test.c \
-				 02_null_test.c
+				 02_null_test.c \
+				 03_segv_test.c
 SRC_CREATE_DIR = $(addprefix utest_create/, $(SRC_CREATE))
 
 SRC     = main.c $(SRC_CREATE_DIR)

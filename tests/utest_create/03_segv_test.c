@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utest_create_tests.h                               :+:      :+:    :+:   */
+/*   03_segv_test.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: graux <graux@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 16:44:35 by graux             #+#    #+#             */
-/*   Updated: 2023/02/06 15:41:21 by graux            ###   ########.fr       */
+/*   Created: 2023/02/06 15:37:01 by graux             #+#    #+#             */
+/*   Updated: 2023/02/06 15:42:56 by graux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTEST_CREATE_TESTS_H
-# define UTEST_CREATE_TESTS_H
+#include "../utest_create_tests.h"
 
-# include "../framework/libunit.h"
+t_status	segv_test(void)
+{
+	int	*arr;
 
-t_status	utest_create_launcher(void);
-t_status	basic_test(void);
-t_status	null_test(void);
-t_status	segv_test(void);
-
-#endif
+	arr = 0;
+	arr[3] = 4;
+	return (FAIL);
+}

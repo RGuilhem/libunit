@@ -6,7 +6,7 @@
 /*   By: graux <graux@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 21:50:39 by graux             #+#    #+#             */
-/*   Updated: 2023/02/06 15:11:54 by graux            ###   ########.fr       */
+/*   Updated: 2023/02/06 15:45:26 by graux            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 static void	print_routine_recap(size_t passed, size_t total)
 {
-	put_str("\n");
+	put_str("\n--------------- ");
 	if (passed == total)
 		put_str(GREEN"OK "RESET"-> ");
 	else
@@ -25,7 +25,7 @@ static void	print_routine_recap(size_t passed, size_t total)
 	put_nbr(passed);
 	put_str("/");
 	put_nbr(total);
-	put_str("\n");
+	put_str(" ---------------\n");
 }
 
 static void	print_status(t_test_sig status)
@@ -33,13 +33,13 @@ static void	print_status(t_test_sig status)
 	put_str("[");
 	if (status == T_OK)
 		put_str(GREEN"OK"RESET);
-	else if (status == T_KO)
+	else if (status == 255)
 		put_str(RED"KO"RESET);
 	else if (status == T_SEGV)
 		put_str(RED"SEGV"RESET);
-	else if (status == T_OK)
+	else if (status == T_BUSE)
 		put_str(RED"BUSE"RESET);
-	else if (status == T_OK)
+	else
 		put_str(YELLOW"UNKOWN SIG FROM TEST"RESET);
 	put_str("]");
 }
@@ -81,7 +81,7 @@ t_status	utest_run_routine(const t_utest *utests, size_t routine_size)
 	passed_tests = 0;
 	while (i < routine_size)
 	{
-		if (utest_run(&utests[i]) == FAIL)
+		if (utest_run(&utests[i]) != OK)
 			status = FAIL;
 		else
 			passed_tests++;
