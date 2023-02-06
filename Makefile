@@ -18,6 +18,8 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
 
+test: $(NAME)
+
 clean:
 	$(RM) $(OBJ)
 
