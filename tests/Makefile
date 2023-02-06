@@ -3,6 +3,12 @@ CC      = gcc
 CFLAGS  = -Wall -Wextra -Werror
 AR      = ar -rcs
 
+#<<INSERT_POS>>
+#-> new_tests
+SRC_NEW_TESTS = 00_new_tests_launcher.c \
+ 01_bs_test.c
+SRC_NEW_TESTS_DIR = $(addprefix new_tests/, $(SRC_NEW_TESTS))
+
 #-> utest_create
 SRC_UTEST_CREATE = 00_utest_create_launcher.c  \
 				   01_basic_test.c \
@@ -10,7 +16,9 @@ SRC_UTEST_CREATE = 00_utest_create_launcher.c  \
 				   03_segv_test.c
 SRC_UTEST_CREATE_DIR = $(addprefix utest_create/, $(SRC_UTEST_CREATE))
 
-SRC     = main.c $(SRC_CREATE_DIR)
+SRC     = main.c \
+$(SRC_NEW_TESTS_DIR) \
+		  $(SRC_CREATE_DIR)
 OBJ     = $(SRC:.c=.o)
 INCLUDE = ../framework
 

@@ -1,16 +1,20 @@
 #!/bin/bash
 
-function craft_new_routine () {
-	local save="$1"
-	local name="$(echo $1 | tr '[:lower:]' '[:upper:]')"
-	echo -e "#-> ${save}\nSRC_$name = $2\nSRC_${name}_DIR = \$(addprefix $1/, \$(SRC_${name}))"
-}
-
-
 function add_routine_to_makefile () {
 	local source_files=$(echo $2 | sed 's/ / \\\n /')
-	local routine=$(craft_new_routine "$1" "$source_files")
-	echo -e "${routine}"
+	local name="$(echo $1 | tr '[:lower:]' '[:upper:]')"
+	echo -e "SRC_${name}_DIR = \$(addprefix $1/, \$(SRC_${name}))" >> temp.txt
+	sed -i '/#<<INSERT_POS>>/ r temp.txt' Makefile
+	rm temp.txt
+	echo -e "SRC_$name = $source_files" >> temp.txt
+	sed -i '/#<<INSERT_POS>>/ r temp.txt' Makefile
+	rm temp.txt
+	echo -e "#-> $1" >> temp.txt
+	sed -i '/#<<INSERT_POS>>/ r temp.txt' Makefile
+	rm temp.txt
+	echo -e "\$(SRC_${name}_DIR) \\" >> temp.txt
+	sed -i '/main.c/ r temp.txt' Makefile
+	rm temp.txt
 }
 
 #find all routines in makefile
@@ -24,10 +28,6 @@ echo ${makefile_routines}
 		# new SRC_<routnine_name> and SRC_<routine_name>_DIR
 		# add SRC_<routine_name>_DIR to SRC
 		# back to 1
-#sync routine launcher
-	# add {.name = "<test_name>", .func = &<test_func>}
-	# <test_func> = <test_name>
-#sync main in case of new routine
 
 # find all files in routine
 # create list of names
@@ -43,9 +43,15 @@ do
 	echo "${files}"
 	if echo "${makefile_routines[@]}" |	grep "$dir"; then
 		echo "Routine already in makefile"
+		#TODO check if all functions are in makefile
+		#TODO sync main in case of new routine
 	else
 		echo "Addind routine in makefile"
 		striped_dir="$(echo $dir | sed 's/.\///')"
 		add_routine_to_makefile "$striped_dir" "$files"
 	fi
 done
+
+#sync routine launcher
+	# add {.name = "<test_name>", .func = &<test_func>}
+	# <test_func> = <test_name>
